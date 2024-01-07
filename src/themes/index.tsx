@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { useMemo } from 'react';
+
+import { ReactNode, useMemo } from 'react';
 
 // material-ui
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
@@ -13,14 +13,14 @@ import componentsOverride from './overrides';
 
 // ==============================|| DEFAULT THEME - MAIN  ||============================== //
 
-export default function ThemeCustomization({ children }) {
+export default function ThemeCustomization({ children }:ThemeCustomizationProps) {
   const theme = Palette('default');
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const themeTypography = Typography(`'Public Sans', sans-serif`);
   const themeCustomShadows = useMemo(() => CustomShadows(theme), [theme]);
 
-  const themeOptions = useMemo(
+  const themeOptions = useMemo<any>(
     () => ({
       breakpoints: {
         values: {
@@ -59,6 +59,7 @@ export default function ThemeCustomization({ children }) {
   );
 }
 
-ThemeCustomization.propTypes = {
-  children: PropTypes.node
-};
+interface ThemeCustomizationProps {
+  children: ReactNode
+}
+

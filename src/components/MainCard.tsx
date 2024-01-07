@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import { ReactNode, forwardRef } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -16,7 +15,7 @@ const headerSX = {
 
 // ==============================|| CUSTOM - MAIN CARD ||============================== //
 
-const MainCard = forwardRef(
+const MainCard = forwardRef<HTMLDivElement, MainCardProps>(
   (
     {
       border = true,
@@ -32,10 +31,10 @@ const MainCard = forwardRef(
       title,
       codeHighlight,
       ...others
-    },
+    }: MainCardProps,
     ref
   ) => {
-    const theme = useTheme();
+    const theme = useTheme<any>();
     boxShadow = theme.palette.mode === 'dark' ? boxShadow || true : boxShadow;
 
     return (
@@ -84,20 +83,20 @@ const MainCard = forwardRef(
   }
 );
 
-MainCard.propTypes = {
-  border: PropTypes.bool,
-  boxShadow: PropTypes.bool,
-  contentSX: PropTypes.object,
-  darkTitle: PropTypes.bool,
-  divider: PropTypes.bool,
-  elevation: PropTypes.number,
-  secondary: PropTypes.node,
-  shadow: PropTypes.string,
-  sx: PropTypes.object,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  codeHighlight: PropTypes.bool,
-  content: PropTypes.bool,
-  children: PropTypes.node
-};
-
+interface MainCardProps {
+  border: boolean;
+  boxShadow?: boolean;
+  contentSX?: any;
+  darkTitle?: boolean;
+  divider?: boolean;
+  elevation?: number;
+  secondary?: ReactNode
+  shadow?: string;
+  sx?: any
+  title?: TitleType;
+  codeHighlight?: boolean;
+  content?: boolean;
+  children: ReactNode;
+}
+type TitleType = string | ReactNode;
 export default MainCard;

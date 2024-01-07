@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -11,15 +10,15 @@ import MainCard from '../MainCard';
 
 // ==============================|| BREADCRUMBS ||============================== //
 
-const Breadcrumbs = ({ navigation, title, ...others }) => {
+const Breadcrumbs = ({ navigation, title, ...others }: BreadcrumbsProps) => {
   const location = useLocation();
-  const [main, setMain] = useState();
-  const [item, setItem] = useState();
+  const [main, setMain] = useState<any>();
+  const [item, setItem] = useState<any>();
 
   // set active item state
-  const getCollapse = (menu) => {
+  const getCollapse = (menu: any) => {
     if (menu.children) {
-      menu.children.filter((collapse) => {
+      menu.children.filter((collapse:any) => {
         if (collapse.type && collapse.type === 'collapse') {
           getCollapse(collapse);
         } else if (collapse.type && collapse.type === 'item') {
@@ -34,7 +33,7 @@ const Breadcrumbs = ({ navigation, title, ...others }) => {
   };
 
   useEffect(() => {
-    navigation?.items?.map((menu) => {
+    navigation?.items?.map((menu:any) => {
       if (menu.type && menu.type === 'group') {
         getCollapse(menu);
       }
@@ -98,9 +97,9 @@ const Breadcrumbs = ({ navigation, title, ...others }) => {
   return breadcrumbContent;
 };
 
-Breadcrumbs.propTypes = {
-  navigation: PropTypes.object,
-  title: PropTypes.bool
-};
+interface BreadcrumbsProps {
+  navigation: any,
+  title: boolean
+}
 
 export default Breadcrumbs;

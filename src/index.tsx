@@ -18,7 +18,7 @@ import { store } from './store';
 
 // ==============================|| MAIN - REACT DOM RENDER  ||============================== //
 
-const container = document.getElementById('root');
+const container:HTMLElement = document.getElementById('root') ?? new HTMLElement();
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(
   <StrictMode>

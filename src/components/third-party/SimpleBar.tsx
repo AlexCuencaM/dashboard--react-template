@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 // material-ui
 import { alpha, styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
@@ -7,6 +5,7 @@ import { Box } from '@mui/material';
 // third-party
 import SimpleBar from 'simplebar-react';
 import { BrowserView, MobileView } from 'react-device-detect';
+import { ReactNode } from 'react';
 
 // root style
 const RootStyle = styled(BrowserView)({
@@ -39,7 +38,7 @@ const SimpleBarStyle = styled(SimpleBar)(({ theme }) => ({
 
 // ==============================|| SIMPLE SCROLL BAR  ||============================== //
 
-export default function SimpleBarScroll({ children, sx, ...other }) {
+export default function SimpleBarScroll({ children, sx, ...other }:SimpleBarScrollProps) {
   return (
     <>
       <RootStyle>
@@ -55,8 +54,7 @@ export default function SimpleBarScroll({ children, sx, ...other }) {
     </>
   );
 }
-
-SimpleBarScroll.propTypes = {
-  children: PropTypes.node,
-  sx: PropTypes.object
-};
+interface SimpleBarScrollProps{
+    children: ReactNode,
+    sx: any
+}
