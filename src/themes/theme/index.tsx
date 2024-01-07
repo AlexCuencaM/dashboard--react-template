@@ -1,4 +1,11 @@
 // ==============================|| PRESET THEME - THEME SELECTOR ||============================== //
+import { Palette, PaletteColor } from '@mui/material/styles';
+export type PaletteColorKeys = keyof Pick<
+  Palette,
+  {
+    [P in keyof Palette]: Palette[P] extends PaletteColor ? P : never;
+  }[keyof Palette]
+>;
 
 const Theme = (colors: any) => {
   const { blue, red, gold, cyan, green, grey } = colors;

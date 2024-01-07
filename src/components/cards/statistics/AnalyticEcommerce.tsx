@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 // material-ui
 import { Box, Chip, Grid, Stack, Typography } from '@mui/material';
 
@@ -8,10 +6,12 @@ import MainCard from 'components/MainCard';
 
 // assets
 import { RiseOutlined, FallOutlined } from '@ant-design/icons';
+import { ReactNode } from 'react';
+import { PaletteColorKeys } from 'themes/theme';
 
 // ==============================|| STATISTICS - ECOMMERCE CARD  ||============================== //
 
-const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }) => (
+const AnalyticEcommerce = ({ color = 'primary', title, count, percentage, isLoss, extra }: AnalyticEcommerceProps) => (
   <MainCard contentSX={{ p: 2.25 }}>
     <Stack spacing={0.5}>
       <Typography variant="h6" color="textSecondary">
@@ -26,7 +26,7 @@ const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }) =
         {percentage && (
           <Grid item>
             <Chip
-              variant="combined"
+            //   variant='combined'
               color={color}
               icon={
                 <>
@@ -53,18 +53,14 @@ const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }) =
     </Box>
   </MainCard>
 );
-
-AnalyticEcommerce.propTypes = {
-  color: PropTypes.string,
-  title: PropTypes.string,
-  count: PropTypes.string,
-  percentage: PropTypes.number,
-  isLoss: PropTypes.bool,
-  extra: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
-};
-
-AnalyticEcommerce.defaultProps = {
-  color: 'primary'
-};
+type AnalyticEcommerceExtraType = ReactNode | string;
+interface AnalyticEcommerceProps {
+  color?: PaletteColorKeys;
+  title: string;
+  count: string;
+  percentage: number;
+  isLoss: boolean;
+  extra: AnalyticEcommerceExtraType;
+}
 
 export default AnalyticEcommerce;

@@ -84,7 +84,7 @@ const MainCard = forwardRef<HTMLDivElement, MainCardProps>(
 );
 
 interface MainCardProps {
-  border: boolean;
+  border?: boolean;
   boxShadow?: boolean;
   contentSX?: any;
   darkTitle?: boolean;
