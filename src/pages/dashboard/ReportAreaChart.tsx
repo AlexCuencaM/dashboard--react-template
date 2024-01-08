@@ -65,10 +65,10 @@ const ReportAreaChart = () => {
   const { primary, secondary } = theme.palette.text;
   const line = theme.palette.divider;
 
-  const [options, setOptions] = useState(areaChartOptions);
+  const [options, setOptions] = useState<any>(areaChartOptions);
 
   useEffect(() => {
-    setOptions((prevState) => ({
+    setOptions((prevState:any) => ({
       ...prevState,
       colors: [theme.palette.warning.main],
       xaxis: {

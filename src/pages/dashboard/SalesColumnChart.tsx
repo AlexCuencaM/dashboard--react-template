@@ -42,7 +42,7 @@ const columnChartOptions = {
   },
   tooltip: {
     y: {
-      formatter(val) {
+      formatter(val:any) {
         return `$ ${val} thousands`;
       }
     }
@@ -102,10 +102,10 @@ const SalesColumnChart = () => {
     }
   ]);
 
-  const [options, setOptions] = useState(columnChartOptions);
+  const [options, setOptions] = useState<any>(columnChartOptions);
 
   useEffect(() => {
-    setOptions((prevState) => ({
+    setOptions((prevState:any) => ({
       ...prevState,
       colors: [warning, primaryMain],
       xaxis: {

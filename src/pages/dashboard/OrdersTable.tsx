@@ -118,7 +118,7 @@ OrderTableHead.propTypes = {
 
 // ==============================|| ORDER TABLE - STATUS ||============================== //
 
-const OrderStatus = ({ status }) => {
+const OrderStatus = ({ status }: OrderStatusProps) => {
   let color;
   let title;
 
@@ -148,8 +148,8 @@ const OrderStatus = ({ status }) => {
   );
 };
 
-OrderStatus.propTypes = {
-  status: PropTypes.number
+interface OrderStatusProps {
+  status: number;
 };
 
 // ==============================|| ORDER TABLE ||============================== //
@@ -157,9 +157,9 @@ OrderStatus.propTypes = {
 export default function OrderTable() {
   const [order] = useState('asc');
   const [orderBy] = useState('trackingNo');
-  const [selected] = useState([]);
+  const [selected] = useState<any>([]);
 
-  const isSelected = (trackingNo) => selected.indexOf(trackingNo) !== -1;
+  const isSelected = (trackingNo:number) => selected.indexOf(trackingNo) !== -1;
 
   return (
     <Box>
@@ -186,7 +186,7 @@ export default function OrderTable() {
         >
           <OrderTableHead order={order} orderBy={orderBy} />
           <TableBody>
-            {stableSort(rows, getComparator(order, orderBy)).map((row, index) => {
+            {stableSort(rows, getComparator(order, orderBy)).map((row:any, index:any) => {
               const isItemSelected = isSelected(row.trackingNo);
               const labelId = `enhanced-table-checkbox-${index}`;
 

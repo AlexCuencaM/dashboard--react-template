@@ -39,8 +39,8 @@ const Dot = ({ color, size }: DotProps) => {
 };
 
 interface DotProps {
-  color: string;
-  size: number;
+  color?: string;
+  size?: number;
 }
 
 export default Dot;

@@ -55,10 +55,10 @@ const MonthlyBarChart = () => {
     }
   ]);
 
-  const [options, setOptions] = useState(barChartOptions);
+  const [options, setOptions] = useState<any>(barChartOptions);
 
   useEffect(() => {
-    setOptions((prevState) => ({
+    setOptions((prevState:any) => ({
       ...prevState,
       colors: [info],
       xaxis: {

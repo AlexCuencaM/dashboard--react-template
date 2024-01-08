@@ -1,6 +1,4 @@
-import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-
 // material-ui
 import { useTheme } from '@mui/material/styles';
 
@@ -30,16 +28,16 @@ const areaChartOptions = {
 
 // ==============================|| INCOME AREA CHART ||============================== //
 
-const IncomeAreaChart = ({ slot }) => {
-  const theme = useTheme();
+const IncomeAreaChart = ({ slot }: IncomeAreaChartProps) => {
+  const theme = useTheme<any>();
 
   const { primary, secondary } = theme.palette.text;
   const line = theme.palette.divider;
 
-  const [options, setOptions] = useState(areaChartOptions);
+  const [options, setOptions] = useState<any>(areaChartOptions);
 
   useEffect(() => {
-    setOptions((prevState) => ({
+    setOptions((prevState:any) => ({
       ...prevState,
       colors: [theme.palette.primary.main, theme.palette.primary[700]],
       xaxis: {
@@ -114,8 +112,8 @@ const IncomeAreaChart = ({ slot }) => {
   return <ReactApexChart options={options} series={series} type="area" height={450} />;
 };
 
-IncomeAreaChart.propTypes = {
-  slot: PropTypes.string
-};
+interface IncomeAreaChartProps {
+  slot: string;
+}
 
 export default IncomeAreaChart;
