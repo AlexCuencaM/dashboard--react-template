@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -11,7 +10,7 @@ import NumberFormat from 'react-number-format';
 // project import
 import Dot from 'components/@extended/Dot';
 
-function createData(trackingNo, name, fat, carbs, protein) {
+function createData(trackingNo: any, name: any, fat: any, carbs: any, protein: any) {
   return { trackingNo, name, fat, carbs, protein };
 }
 
@@ -28,7 +27,7 @@ const rows = [
   createData(98753291, 'Chair', 100, 0, 14001)
 ];
 
-function descendingComparator(a, b, orderBy) {
+function descendingComparator(a: any, b: any, orderBy: any) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
@@ -38,20 +37,20 @@ function descendingComparator(a, b, orderBy) {
   return 0;
 }
 
-function getComparator(order, orderBy) {
-  return order === 'desc' ? (a, b) => descendingComparator(a, b, orderBy) : (a, b) => -descendingComparator(a, b, orderBy);
+function getComparator(order: any, orderBy: any) {
+  return order === 'desc' ? (a: any, b: any) => descendingComparator(a, b, orderBy) : (a: any, b: any) => -descendingComparator(a, b, orderBy);
 }
 
-function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
+function stableSort(array: any, comparator :any) {
+  const stabilizedThis = array.map((el: any, index: any) => [el, index]);
+  stabilizedThis.sort((a: any, b: any) => {
     const order = comparator(a[0], b[0]);
     if (order !== 0) {
       return order;
     }
     return a[1] - b[1];
   });
-  return stabilizedThis.map((el) => el[0]);
+  return stabilizedThis.map((el: any) => el[0]);
 }
 
 // ==============================|| ORDER TABLE - HEADER CELL ||============================== //
@@ -92,16 +91,16 @@ const headCells = [
 
 // ==============================|| ORDER TABLE - HEADER ||============================== //
 
-function OrderTableHead({ order, orderBy }) {
+function OrderTableHead({ order, orderBy }: OrderTableHeadProps) {
   return (
     <TableHead>
       <TableRow>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.align}
+            align={headCell.align as any}
             padding={headCell.disablePadding ? 'none' : 'normal'}
-            sortDirection={orderBy === headCell.id ? order : false}
+            sortDirection={(orderBy === headCell.id ? order : false) as any}
           >
             {headCell.label}
           </TableCell>
@@ -111,9 +110,9 @@ function OrderTableHead({ order, orderBy }) {
   );
 }
 
-OrderTableHead.propTypes = {
-  order: PropTypes.string,
-  orderBy: PropTypes.string
+interface OrderTableHeadProps { 
+  order: string;
+  orderBy: string;
 };
 
 // ==============================|| ORDER TABLE - STATUS ||============================== //
