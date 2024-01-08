@@ -73,7 +73,8 @@ const MainCard = forwardRef<HTMLDivElement, MainCardProps>(
         {codeHighlight && (
           <>
             <Divider sx={{ borderStyle: 'dashed' }} />
-            <Highlighter codeHighlight={codeHighlight} main>
+            {/* <Highlighter codeHighlight={codeHighlight} main> */}
+            <Highlighter>
               {children}
             </Highlighter>
           </>

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+
 import { ReactNode, useState } from 'react';
 
 // material-ui
