@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 // material-ui
 import { Box, CardActions, Collapse, Divider, IconButton, Tooltip } from '@mui/material';
@@ -16,7 +16,7 @@ import { CodeOutlined, CopyOutlined } from '@ant-design/icons';
 
 // ==============================|| CLIPBOARD & HIGHLIGHTER   ||============================== //
 
-const Highlighter = ({ children }) => {
+const Highlighter = ({ children }: HighlighterProps) => {
   const [highlight, setHighlight] = useState(false);
 
   return (
@@ -58,8 +58,8 @@ const Highlighter = ({ children }) => {
   );
 };
 
-Highlighter.propTypes = {
-  children: PropTypes.node
-};
+interface HighlighterProps {
+  children: ReactNode
+}
 
 export default Highlighter;
