@@ -59,7 +59,7 @@ const Highlighter = ({ children }: HighlighterProps) => {
 };
 
 interface HighlighterProps {
-  children: ReactNode
+  children: ReactNode | ReactNode[];
 }
 
 export default Highlighter;
